@@ -1,6 +1,6 @@
 on:
-  schedule:
-    - cron: '0 10 * * 1'
+  push:
+    branches: main
 
 jobs:
   import-data:
@@ -26,12 +26,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Import data
-        run: Rscript -e 'source("data_update.R")'
+        run: Rscript -e 'source("data_summarise.R")'
         
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add raw-data/*
+          git add output-data/*
           git commit -m 'Data updated' || echo "No changes to commit"
           git push origin || echo "No changes to commit"

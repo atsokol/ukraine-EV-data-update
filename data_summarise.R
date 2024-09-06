@@ -45,7 +45,7 @@ cars <- data |>
   summarise(count = sum(count)) |> 
   rename(date = DATE, brand = BRAND, fuel = FUEL)
 
-write_csv(cars, "output-data/Ukraine_cars.csv")
+write.csv(cars, "output-data/Ukraine_cars.csv")
 
 cars |> 
   mutate(year = year(date)) |> 
@@ -70,4 +70,4 @@ ev_cars <- data |>
   rename(date = DATE, brand = BRAND, fuel = FUEL) |> 
   select(brand, fuel, year = YEAR, age = AGE)
 
-write_csv(ev_cars, "output-data/Ukraine_EV_cars.csv")
+write.csv(ev_cars, "output-data/Ukraine_EV_cars.csv")
