@@ -1,5 +1,8 @@
 library(arrow)
 library(lubridate)
+library(readr)
+library(dplyr)
+library(stringr)
 
 data <- open_dataset("raw-data/parquet")
 
