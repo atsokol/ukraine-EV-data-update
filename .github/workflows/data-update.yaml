@@ -26,7 +26,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Import data
-        run: Rscript -e 'source("data_update.R")'
+        run: |
+          Rscript -e 'source("data_update.R")'
+          Rscript -e 'source("data_summarise.R")'
         
       - name: Commit results
         run: |
