@@ -16,8 +16,8 @@ pp <- 'https://data.gov.ua/dataset/06779371-308f-42d7-895e-5a39833375f0/datapack
 pass <- jsonlite::read_json(pp, simplifyVector = TRUE)
 urls <- pass$resources
 
-year <- urls$name |> tail(2) |> str_extract("([0-9]{4})$", group = 1) |> as.numeric()
-path <- urls$path |> tail(2) 
+year <- urls$name |> tail(2)[1] |> str_extract("([0-9]{4})$", group = 1) |> as.numeric()
+path <- urls$path |> tail(2)[1] 
 file <- tempfile()
 download.file(path, file)
 new_file <- unzip(file, exdir = tempdir())
