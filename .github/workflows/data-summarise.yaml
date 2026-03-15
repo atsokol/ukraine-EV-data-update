@@ -22,12 +22,15 @@ jobs:
             any::lubridate
             any::here
             any::fs
+            any::httr
 
       - name: Check out repository
         uses: actions/checkout@v3
 
       - name: Import data
-        run: Rscript -e 'source("data_summarise.R")'
+        run: |
+          Rscript -e 'source("data_summarise.R")'
+          Rscript -e 'source("data_cee.R")'
         
       - name: Commit results
         run: |
